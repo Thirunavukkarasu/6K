@@ -14,3 +14,7 @@ Add View:-
 Delete View:-
 
 ![alt tag](https://github.com/Thirunavukkarasu/6K/blob/master/www/snapshots/Delete.jpg)
+
+Lap View:-
+
+![alt tag](https://github.com/Thirunavukkarasu/6K/blob/master/www/snapshots/Lap.jpg)

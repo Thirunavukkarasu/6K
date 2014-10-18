@@ -2,9 +2,10 @@
   <ion-content class="padding">
         <div class="list card">
            <div class="item item-avatar" id="timer">
-            <span>{{timer}}</span>
+            <span ng-hide="timer_enabled">Timer!</span>
+            <span ng-hide="!timer_enabled">{{elapsedTime|TimerConversion}}</span>
             </div>
-        </div>
+        </div>       
         <div class="list card">
            <div class="item item-avatar">
             <button class="button button-large button-positive" ng-click="startRace()">Start</button>
@@ -22,8 +23,10 @@
              <ion-list>
                     <ion-item ng-repeat="runner in runners | filter:name">
                         {{runner.name}}
-                        <button class="button button-small button-royal badge badge-assertive" ng-click="addLap(runner.name)">Lap</button>                  
-                        <p>{{runner.timing}}</p>
+                        <button class="button button-small button-royal badge badge-assertive" ng-click="addLap(runner.name)">Lap</button><br/>
+                        <div ng-repeat="lap in runner.timing">
+                            <span>Lap {{$index+1}} : {{renderLaptime(runner,$index)|TimerConversion}}</span>
+                        </div>
                     </ion-item>
              </ion-list>
       </div>

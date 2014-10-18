@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('sixkApp', ['ionic', 'sixkApp.controllers', 'sixkApp.factories'])
+angular.module('sixkApp', ['ionic', 'sixkApp.controllers', 'sixkApp.services','sixkApp.filters'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

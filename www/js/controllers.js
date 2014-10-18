@@ -1,26 +1,19 @@
 angular.module('sixkApp.controllers', [])
 
-.controller('RunnerController', function($scope, $interval, $window, runnerFactory) {
-        var startTime = 0,
-            elapsedTime = 0,
-            hours = 0,
-            mins = 0,
-            secs = 0,
-            timer = 0;
+.controller('RunnerController', function($ionicPopup,$scope, $interval, $window, RunnerService) {
+        var elapsedTime = 0;
+        var timer_enabled = false;
     
         /* Retrive the list of runners from Factory */
-        $scope.runners = runnerFactory.getRunnersList();
+        $scope.runners = RunnerService.getRunnersList();
 
         /* Upon clicking startRace Button */
         $scope.startRace = function() {
-             startTime = $window.Math.round((new Date().getTime()));          
-            raceInprogress = $interval(function() {
-                 elapsedTime = $window.Math.round((new Date().getTime()) - startTime);
-                 hours = Math.floor(elapsedTime / 36e5),
-                 mins = Math.floor((elapsedTime % 36e5) / 6e4),
-                 secs = Math.floor((elapsedTime % 6e4) / 1000),
-                 timer = hours + ":"+ mins +":"+ secs;                  
-                 $scope.timer = timer;
+            $scope.timer_enabled = true;
+            RunnerService.setStartTime();
+            raceInprogress = $interval(function() {         
+                elapsedTime = $window.Math.round((new Date().getTime()) - RunnerService.getStartTime());
+                $scope.elapsedTime = elapsedTime;
             }, 1000);
         }
         
@@ -31,19 +24,34 @@ angular.module('sixkApp.controllers', [])
         
         /* Add the new Runner data to Factory */
         $scope.saveRunner = function(user){
-            runnerFactory.pushRunner({name:user.name,timing:user.timing});
+            RunnerService.pushRunner({name:user.name,timing:user.timing});
+            var alertPopup = $ionicPopup.alert({
+              title: '<b>Success!</b>',
+              template: 'Runner '+user.name+' got added successfully:)'
+            });
         }
         
         /* Remove the Runner data from Factory */
         $scope.removeRunner = function(index){
-            runnerFactory.spliceRunner(index);
+            RunnerService.spliceRunner(index);
+            var alertPopup = $ionicPopup.alert({
+              title: '<b>Success!</b>',
+              template: 'Runner got deleted successfully:('
+            });            
         }       
        
         /* Add lap on tap */
         $scope.addLap = function(runner) {
-            var currentRunner = runnerFactory.filterRunnerTiming(runner);
+            var currentRunner = RunnerService.filterRunnerTiming(runner);
             var t = currentRunner[0].timing;
-            t.push(timer);
-            console.log(t);
+            t.push(elapsedTime);
+        }
+        
+        $scope.renderLaptime = function(runner, index, curTiming) {
+            if (index == 0) {
+                return runner.timing[index];
+            } else {
+                return parseInt(runner.timing[index]) - parseInt(runner.timing[index - 1]);
+            }
         }
     });
