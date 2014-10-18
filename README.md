@@ -17,4 +17,4 @@ Delete View:-
 
 Lap View:-
 
-![alt tag](https://github.com/Thirunavukkarasu/6K/blob/master/www/snapshots/Lap.jpg)
+![alt tag](https://github.com/Thirunavukkarasu/6K/blob/master/www/snapshots/Laps.jpg)
