@@ -23,6 +23,7 @@
                     <ion-item ng-repeat="runner in runners | filter:name">
                         {{runner.name}}
                         <button class="button button-small button-royal badge badge-assertive" ng-click="addLap(runner.name)">Lap</button>                  
+                        <p>{{runner.timing}}</p>
                     </ion-item>
              </ion-list>
       </div>

@@ -7,17 +7,17 @@ angular.module('sixkApp.factories', [])
                            {name: 'Rekha',timing: []},
                            {name: 'Anjana',timing: []}];
           return {
-            listRunners: function() {
+            getRunnersList: function() {
               return runners;
-            },
-            getLength: function(){
-              return runners.length;
             },
             pushRunner: function(runner){
               runners.push(runner);
             },
-            removeRunner: function(index){
+            spliceRunner: function(index){
               runners.splice(index,1);
+            },
+            filterRunnerTiming: function(runner){ 
+                return $filter('filter')(runners, {name: runner});
             }
           }
         }
