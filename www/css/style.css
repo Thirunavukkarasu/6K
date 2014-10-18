@@ -1,0 +1,13 @@
+/* Empty. Add your own CSS if you like */
+
+.button-large{
+    border-radius: 5px 20px 5px;
+    background: #BADA55;
+    font: bold 26px;
+}
+
+#timer{
+  background-color: #3a50d9;
+  color: #e0eff2;
+  font: italic bold 50px Georgia, Serif;
+}

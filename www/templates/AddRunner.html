@@ -1,0 +1,19 @@
+<ion-view title="Siruseri 6K">
+  <ion-content class="padding">
+      <div class="list">
+       <form name="user">
+        <label class="item item-input">
+          <span class="input-label"><b>Name:</b></span>
+          <input type="text" ng-model="user.name">
+        </label>
+        <label class="item item-input">
+          <span class="input-label"><b>Timing:</b></span>
+          <input type="text" ng-model="user.timing" ng-list=", " ng-trim="true">
+        </label>
+        <label class="item">
+          <button class="button button-block button-assertive" type="submit" ng-click="saveRunner(user)">Save</button>
+        </label>
+        </form>
+      </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,10 @@
+<ion-view title="Siruseri 6K">
+  <ion-content class="padding">
+     <ion-list>
+            <ion-item ng-repeat="runner in runners">
+                {{runner.name}}
+                <button class="button button-small button-royal badge badge-assertive" ng-click="removeRunner($index)"><i class="icon ion-close"></i></button>
+            </ion-item>
+     </ion-list>
+  </ion-content>
+</ion-view>
