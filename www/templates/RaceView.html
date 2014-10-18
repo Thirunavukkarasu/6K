@@ -6,10 +6,10 @@
             <span ng-hide="!timer_enabled">{{elapsedTime|TimerConversion}}</span>
             </div>
         </div>       
-        <div class="list card">
+        <div class="list card" id="controls">
            <div class="item item-avatar">
-            <button class="button button-large button-positive" ng-click="startRace()">Start</button>
-            <button class="button button-large button-assertive" ng-click="stopRace()">Stop</button>
+            <button class="button button-large button-positive" id="start-button" ng-click="startRace()">Start</button>
+            <button class="button button-large button-assertive" id="stop-button" ng-click="stopRace()">Stop</button>
             </div>
         </div>
         <div class="list card">
